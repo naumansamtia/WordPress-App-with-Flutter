@@ -8,7 +8,7 @@ class CachedImage extends StatelessWidget {
   final double height;
   final double width;
 
-  CachedImage(this.url, {this.height, this.width});
+  CachedImage(this.url, {required this.height, required this.width});
 
   @override
   Widget build(BuildContext context) {

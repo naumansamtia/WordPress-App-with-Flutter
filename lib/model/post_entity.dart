@@ -1,12 +1,12 @@
 import 'package:intl/intl.dart';
 
 class PostEntity {
-  String modifiedGmt;
-  PostEmbedded extra;
-  String link;
-  int id;
-  String title;
-  String content;
+  String modifiedGmt = '';
+  PostEmbedded extra = PostEmbedded(author: [], categories: [], image: []);
+  String link = '';
+  int id = 0;
+  String title  = '';
+  String content = '';
 
   /// featured image getter with checks for no image
   String get image =>  extra?.image != null ? extra.image[0]?.sourceUrl ?? '' : '';
@@ -17,11 +17,11 @@ class PostEntity {
 
   bool isDetailCard = false;
 
-  PostEntity({this.modifiedGmt, this.extra, this.link, this.id, this.title, this.content});
+  PostEntity({required this.modifiedGmt, required this.extra, required this.link, required this.id, required this.title, required this.content});
 
   PostEntity.fromJson(Map<String, dynamic> json) {
     modifiedGmt = json['modified_gmt'];
-    extra = json['_embedded'] != null ? new PostEmbedded.fromJson(json['_embedded']) : null;
+    extra = (json['_embedded'] != null ? new PostEmbedded.fromJson(json['_embedded']) : null)!;
     link = json['link'];
     id = json['id'];
     title = json['title'] != null ? json['title']['rendered'] : null;
@@ -43,27 +43,27 @@ class PostEntity {
 }
 
 class PostEmbedded {
-  List<PostEmbeddedAuthor> author;
-  List<PostCategory> categories;
-  List<FeaturedImage> image;
+  List<PostEmbeddedAuthor> author = [];
+  List<PostCategory> categories = [];
+  List<FeaturedImage> image = [];
 
-  PostEmbedded({this.author, this.categories, this.image});
+  PostEmbedded({required this.author, required this.categories, required this.image});
 
   PostEmbedded.fromJson(Map<String, dynamic> json) {
     if (json['author'] != null) {
-      author = new List<PostEmbeddedAuthor>();
+      author = [];
       (json['author'] as List).forEach((v) {
         author.add(new PostEmbeddedAuthor.fromJson(v));
       });
     }
     if (json['wp:term'] != null) {
-      categories = new List<PostCategory>();
+      categories = [];
       (json['wp:term'][0] as List).forEach((v) {
         categories.add(new PostCategory.fromJson(v));
       });
     }
     if (json['wp:featuredmedia'] != null) {
-      image = new List<FeaturedImage>();
+      image = [];
       (json['wp:featuredmedia'] as List).forEach((v) {
         image.add(new FeaturedImage.fromJson(v));
       });
@@ -86,12 +86,12 @@ class PostEmbedded {
 }
 
 class PostEmbeddedAuthor {
-  String avatar;
-  String name;
-  String link;
-  int id;
+  String avatar = '';
+  String name = '';
+  String link = '';
+  int id = 0;
 
-  PostEmbeddedAuthor({this.avatar, this.name, this.link, this.id});
+  PostEmbeddedAuthor({required this.avatar, required this.name, required this.link, required this.id});
 
   PostEmbeddedAuthor.fromJson(Map<String, dynamic> json) {
     avatar = json['avatar_urls'] != null ? json['avatar_urls']['96'] : null;
@@ -113,10 +113,10 @@ class PostEmbeddedAuthor {
 }
 
 class PostCategory {
-  String name;
-  int id;
+   String name = '';
+   int id = 0;
 
-  PostCategory({this.name, this.id});
+  PostCategory({required this.name, required this.id});
 
   PostCategory.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -132,13 +132,13 @@ class PostCategory {
 }
 
 class FeaturedImage {
-  String file;
-  String mimeType;
-  int width;
+  String file = '';
+  String mimeType = '';
+  int width = 0;
   String sourceUrl = "";
-  int height;
+  int height = 0;
 
-  FeaturedImage({this.file, this.mimeType, this.width, this.sourceUrl, this.height});
+  FeaturedImage({required this.file, required this.mimeType, required this.width, required this.sourceUrl, required this.height});
 
   FeaturedImage.fromJson(Map<String, dynamic> json) {
     if (json['media_details'] == null) return;

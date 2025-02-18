@@ -5,16 +5,16 @@ import '../network/wp_api.dart';
 import '../widgets/post_list_item.dart';
 
 class PostsList extends StatefulWidget {
-  int category = 0;
+  final int category = 0;
 
-  PostsList({this.category = 0});
+  PostsList({ this.category = 0});
 
   @override
   _PostsListState createState() => _PostsListState();
 }
 
 class _PostsListState extends State<PostsList> {
-  List<PostEntity> posts = new List<PostEntity>();
+  List<PostEntity> posts = [];
 
   int page = 0;
   ScrollController _scrollController = new ScrollController();

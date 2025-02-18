@@ -11,7 +11,7 @@ class FeaturedCategoryList extends StatefulWidget {
 }
 
 class _FeaturedCategoryListState extends State<FeaturedCategoryList> with AutomaticKeepAliveClientMixin {
-  List<PostEntity> posts = new List<PostEntity>();
+  List<PostEntity> posts = [];
   bool isLoading = true;
 
   @override

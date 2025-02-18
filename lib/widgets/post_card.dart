@@ -5,8 +5,8 @@ import '../pages/post_details.dart';
 import '../widgets/helpers.dart';
 
 class PostCard extends StatelessWidget {
-  PostEntity post;
-  bool isFeaturedList;
+  final PostEntity post;
+  final bool isFeaturedList;
 
   PostCard(this.post, {this.isFeaturedList = false});
 
@@ -42,7 +42,7 @@ class PostCard extends StatelessWidget {
                   Positioned.directional(
                     textDirection: textDirection,
                     end: 0,
-                    child: CategoryPill(post: post),
+                    child: CategoryPill(post: post, key: Key(post.id.toString())),
                   ),
                   Positioned(
                     bottom: 0,
@@ -67,7 +67,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    child: Hero(tag: '${post.id}_author', child: Author(post: post)),
+                    child: Hero(tag: '${post.id}_author', child: Author(post: post, key: key!,)),
                   )
                 ],
               ),
@@ -81,8 +81,8 @@ class PostCard extends StatelessWidget {
 
 class CategoryPill extends StatelessWidget {
   const CategoryPill({
-    Key key,
-    @required this.post,
+    required Key key,
+    required this.post,
   }) : super(key: key);
 
   final PostEntity post;
@@ -111,8 +111,8 @@ class CategoryPill extends StatelessWidget {
 
 class Author extends StatelessWidget {
   const Author({
-    Key key,
-    @required this.post,
+    required Key key,
+    required this.post,
   }) : super(key: key);
 
   final PostEntity post;
@@ -126,7 +126,7 @@ class Author extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(6.0),
             child: CachedImage(
-              post?.extra?.author[0]?.avatar,
+              post?.extra?.author[0]!.avatar,
               height: 26.0,
               width: 26.0,
             ),

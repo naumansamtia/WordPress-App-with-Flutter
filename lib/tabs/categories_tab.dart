@@ -10,7 +10,7 @@ class CategoriesTab extends StatefulWidget {
 }
 
 class _CategoriesTabState extends State<CategoriesTab> {
-  List<PostCategory> categories = new List<PostCategory>();
+  List<PostCategory> categories = [];
   bool isLoading = true;
 
   @override
