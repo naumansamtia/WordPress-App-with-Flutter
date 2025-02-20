@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../model/post_entity.dart';
 import '../widgets/helpers.dart';
@@ -50,7 +49,7 @@ class PostDetails extends StatelessWidget {
                       ),
                       Positioned(
                         bottom: 0,
-                        child: Author(post: post),
+                        child: Author(post: post, key: key,),
                       ),
                       Positioned(
                         bottom: 35.0,
@@ -73,7 +72,7 @@ class PostDetails extends StatelessWidget {
                         textDirection: textDirection,
                         bottom: 0,
                         end: 0,
-                        child: CategoryPill(post: post),
+                        child: CategoryPill(post: post, key: key,),
                       ),
                     ],
                   ),
@@ -84,15 +83,16 @@ class PostDetails extends StatelessWidget {
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Html(
-                data: post.content,
-                style: {
-                  'a' : Style(
-                    color: Colors.blueAccent,
-                    textDecoration: TextDecoration.underline,
-                    textDecorationColor: Colors.blueAccent
-                  )
-                },
+              child: HtmlWidget(
+                 post.content,
+                // onTapUrl: (url) => print('tapped $url'),
+                // style: {
+                //   'a' : Style(
+                //     color: Colors.blueAccent,
+                //     textDecoration: TextDecoration.underline,
+                //     textDecorationColor: Colors.blueAccent
+                //   )
+                // },
               ),
             ),
           ),

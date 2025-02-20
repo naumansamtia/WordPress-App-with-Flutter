@@ -40,7 +40,7 @@ class PostListItem extends StatelessWidget {
                     Text(
                       post.title,
                       textAlign: TextAlign.left,
-                      maxLines: 3,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0, fontFamily: 'Roboto'),
                       // style: Theme.of(context).textTheme.bodyText1, //TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0, fontFamily: 'Roboto'),
@@ -48,12 +48,16 @@ class PostListItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(post.date),
+                        Text(post.date,
+                        style: TextStyle(color: Colors.grey, fontSize: 12.0)
+                        ),
                         Expanded(
                           child: Text(
                             post.category,
                             textAlign: TextAlign.end,
                             overflow: TextOverflow.ellipsis,
+                            style: TextStyle(color: Colors.grey, fontSize: 12.0),
+                            maxLines: 2,
                           ),
                         ),
                       ],

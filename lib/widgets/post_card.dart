@@ -67,7 +67,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    child: Hero(tag: '${post.id}_author', child: Author(post: post, key: key!,)),
+                    child: Hero(tag: '${post.id}_author', child: Author(post: post, key: key,)),
                   )
                 ],
               ),
@@ -81,7 +81,7 @@ class PostCard extends StatelessWidget {
 
 class CategoryPill extends StatelessWidget {
   const CategoryPill({
-    required Key key,
+    Key? key,
     required this.post,
   }) : super(key: key);
 
@@ -111,7 +111,7 @@ class CategoryPill extends StatelessWidget {
 
 class Author extends StatelessWidget {
   const Author({
-    required Key key,
+    Key? key,
     required this.post,
   }) : super(key: key);
 
@@ -126,7 +126,7 @@ class Author extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(6.0),
             child: CachedImage(
-              post?.extra?.author[0]!.avatar,
+              post?.extra?.author[0]!.avatar ??'',
               height: 26.0,
               width: 26.0,
             ),

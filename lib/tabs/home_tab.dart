@@ -22,7 +22,8 @@ class HomeTab extends StatelessWidget {
             ListHeading('Latest', 0),
             Flexible(
               fit: FlexFit.loose,
-              child: PostsList(),
+              //todo fix this category id
+              child: PostsList(category: 0,),
             ),
           ],
         ),

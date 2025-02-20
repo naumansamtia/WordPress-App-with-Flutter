@@ -5,9 +5,9 @@ import '../network/wp_api.dart';
 import '../widgets/post_list_item.dart';
 
 class PostsList extends StatefulWidget {
-  final int category = 0;
+  final int category ;
 
-  PostsList({ this.category = 0});
+  PostsList({ required this.category});
 
   @override
   _PostsListState createState() => _PostsListState();

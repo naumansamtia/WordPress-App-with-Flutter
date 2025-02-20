@@ -5,8 +5,7 @@ class Style {
     Color backgroundColor = isDark ? Colors.black : Colors.white;
     Color foregroundColor = isDark ? Colors.white : Colors.black;
     return ThemeData(
-      // brightness: isDark ? Brightness.dark : Brightness.light,
-      backgroundColor: backgroundColor,
+      brightness: isDark ? Brightness.dark : Brightness.light,
       canvasColor: backgroundColor,
       primaryColor: Color(0xFF249991),
       appBarTheme: AppBarTheme(
@@ -19,25 +18,25 @@ class Style {
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
-          ).bodyText2, titleTextStyle: TextTheme(
+          ).bodyMedium, titleTextStyle: TextTheme(
             titleMedium: TextStyle(
               color: foregroundColor,
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
-          ).headline6),
+          ).titleLarge),
       textTheme: TextTheme(
-        bodyText1: TextStyle(color: foregroundColor, fontWeight: FontWeight.bold),
-        bodyText2: TextStyle(
+        bodySmall: TextStyle(color: foregroundColor, fontSize: 12.0),
+        bodyLarge: TextStyle(color: foregroundColor, fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(
           color: foregroundColor,
           fontWeight: FontWeight.bold,
           fontSize: 18.0,
           fontFamily: 'Roboto',
         ),
       ),
-      colorScheme: ColorScheme.fromSwatch()
-          .copyWith(secondary: Color(0xFF249991), brightness: isDark ? Brightness.dark : Brightness.light),
-      textSelectionTheme: TextSelectionThemeData(selectionColor: isDark ? Colors.white12 : Colors.grey.shade300),
+      textSelectionTheme: TextSelectionThemeData(selectionColor: isDark ? Colors.white12 : Colors.grey.shade300), colorScheme: ColorScheme.fromSwatch()
+          .copyWith(secondary: Color(0xFF249991), brightness: isDark ? Brightness.dark : Brightness.light).copyWith(background: backgroundColor),
     );
   }
 }

@@ -34,7 +34,7 @@ class _FeaturedCategoryListState extends State<FeaturedCategoryList> with Automa
             child: CircularProgressIndicator(),
           )
         : ListView.builder(
-            itemCount: posts?.length ?? 0,
+            itemCount: posts.length,
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
 //            physics: ClampingScrollPhysics(),
